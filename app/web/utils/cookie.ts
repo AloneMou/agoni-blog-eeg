@@ -1,4 +1,4 @@
-import { isBrowser } from 'umi';
+import {isBrowser} from 'umi';
 
 const setCookie = (name, value, path, days) => {
   if (!isBrowser()) {
@@ -33,4 +33,4 @@ const getCookie = (name) => {
   return cookie;
 };
 
-export { setCookie, getCookie };
+export {setCookie, getCookie};

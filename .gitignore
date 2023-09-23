@@ -15,9 +15,9 @@ config/manifest.json
 .DS_Store
 
 # umi
-/src/.umi
-/src/.umi-production
-/src/.umi-test
+/app/web/.umi
+/app/web/.umi-production
+/app/web/.umi-test
 /.env.local
 .history
 mock
@@ -25,4 +25,5 @@ app/public
 /logs
 /run
 .umi
+
 .idea
