@@ -4,7 +4,7 @@
   "description": "",
   "private": true,
   "scripts": {
-    "start": "egg-scripts start --port=7001  --title=egg-umi-ssr --env=prod",
+    "start": "egg-scripts start --port=7001 --daemon --title=egg-umi-ssr --env=prod",
     "stop": "egg-scripts stop --title=egg-umi-ssr",
     "dev": "egg-bin dev --port=7001 --sticky",
     "build": "cross-env APP_ROOT=app/web umi build",
@@ -52,7 +52,6 @@
   },
   "devDependencies": {
     "@ant-design/pro-cli": "^2.1.0",
-    "@svgr/webpack": "^8.1.0",
     "@types/qs": "^6.5.3",
     "@types/jest": "^26.0.0",
     "@types/lodash": "^4.14.0",
@@ -77,8 +76,7 @@
     "eslint-config-egg": "^7.1.0",
     "redbox-react": "^1.5.0",
     "webstorm-disable-index": "^1.2.0",
-    "typescript": "^4.5.0",
-    "webpack-chain": "^5.2.4"
+    "typescript": "^4.5.0"
   },
   "repository": {
     "type": "git",

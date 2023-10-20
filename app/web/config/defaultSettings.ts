@@ -14,7 +14,7 @@ const Settings: LayoutSettings & {
   colorWeak: false,
   headerHeight:60,
   splitMenus:false,
-  title: 'AgoniBlog博客管理平台',
+  title: 'AgoniBlog博客',
   logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
   iconfontUrl: '',
 };

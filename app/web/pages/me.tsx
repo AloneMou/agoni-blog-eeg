@@ -2,7 +2,7 @@ import {Button} from "antd";
 import {ReactComponent as IconHome} from '@/assets/icon/zip.svg';
 import Icon from "@ant-design/icons";
 
-const Index: React.FC = () => {
+const MeHome: React.FC = () => {
 
   return (
     <>
@@ -12,4 +12,4 @@ const Index: React.FC = () => {
   )
 }
 
-export default Index;
+export default MeHome;

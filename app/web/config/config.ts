@@ -19,6 +19,18 @@ export default defineConfig({
     fileName: '../../config/manifest.json',
     publicPath: '',
   },
+  headScripts:[
+    `<script>
+        var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?10245fc6ee5650a88ba1f06bd17d83b1";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+      </script>
+      `
+  ],
   locale: {
     default: 'zh-CN',
     antd: false,
