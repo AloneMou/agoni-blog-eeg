@@ -40,7 +40,7 @@ export const locale = {
       console.error('---------必须输入要切换的语言，否则无法切换--------');
       return;
     }
-    localStorage.setItem('umi_locale', lang);
+    // window.localStorage.setItem('umi_locale', lang);
     setCookie('umi_locale', lang, null, 10000);
     if (realReload) {
       window.location.reload();

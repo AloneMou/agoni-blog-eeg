@@ -15,7 +15,7 @@ const Settings: LayoutSettings & {
   headerHeight:60,
   splitMenus:false,
   title: 'AgoniBlog博客',
-  logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+  logo: 'https://oss.agoniblog.com/f32f453e3588c80f3f496a1b2515411.jpg',
   iconfontUrl: '',
 };
 

@@ -1,14 +1,22 @@
 import {Avatar, Button, Card, Carousel, Col, Row, Space, Image, Layout} from "antd";
 import {GridContent} from "@ant-design/pro-layout";
 import {EditOutlined, SettingOutlined} from "@ant-design/icons";
+import {Helmet} from "react-helmet";
+
+
 const {Meta} = Card;
 const {Header, Footer, Sider, Content} = Layout;
+
 const Home: React.FC = () => {
 
   return (
     <GridContent>
+      <Helmet encodeSpecialCharacters={false}>
+        <meta charSet="utf-8"/>
+        <title>首页</title>
+      </Helmet>
       <Layout>
-        <Sider width={280} theme={"light"} style={{backgroundColor:"#f0f2f5"}} breakpoint="xs">
+        <Sider width={280} theme={"light"} style={{backgroundColor: "#f0f2f5"}} breakpoint="xs">
           <Card
             cover={
               <img
@@ -23,13 +31,13 @@ const Home: React.FC = () => {
             ]}
           >
             <Meta
-              avatar={<Avatar src="https://oss.agoniblog.com/czp/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230130114316.jpg"/>}
+              avatar={<Avatar
+                src="https://oss.agoniblog.com/czp/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230130114316.jpg"/>}
               description="个人对于新框架比较感兴趣，遇到比较好的项目或者工具包会进行实践"
             />
           </Card>
         </Sider>
         <Content style={{marginLeft: '20px'}}>
-
           <Carousel autoplay>
             <div>
               <Image
