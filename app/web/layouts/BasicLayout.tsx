@@ -1,7 +1,6 @@
 import {BasicLayoutProps as ProLayoutProps, DefaultFooter} from '@ant-design/pro-layout';
 import ProLayout from '@ant-design/pro-layout';
 import React from 'react';
-import {useEffect} from 'react';
 import defaultSettings from '../config/defaultSettings';
 import {BackTop} from 'antd';
 import {Link} from 'umi';
@@ -21,8 +20,6 @@ export interface BasicLayoutProps extends ProLayoutProps {
  * @author liyupi
  */
 const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
-  useEffect(() => {
-  }, []);
   return (
     <>
       <ProLayout

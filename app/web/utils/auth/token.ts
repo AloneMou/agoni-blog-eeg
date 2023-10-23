@@ -1,4 +1,5 @@
 import {REFRESH_TOKEN_KEY, TOKEN_KEY} from '@/enums/cacheEnum';
+import {isBrowser} from 'umi';
 
 
 export function getToken(): string | null {
@@ -18,18 +19,27 @@ export function removeRefreshToken() {
 }
 
 export function getAuthCache(key) {
-  return localStorage.getItem(key);
+  if (isBrowser()) {
+    return window.localStorage.getItem(key);
+  }
+  return null;
 }
 
 
 export function setAuthCache(key: string, value: string) {
-  return localStorage.setItem(key, value);
+  if (isBrowser()) {
+    return window.localStorage.setItem(key, value);
+  }
 }
 
 export function removeAuthCache(key: string) {
-  return localStorage.removeItem(key);
+  if (isBrowser()) {
+    return window.localStorage.removeItem(key);
+  }
 }
 
 export function clearAuthCache() {
-  return localStorage.clear();
+  if (isBrowser()) {
+    return window.localStorage.clear();
+  }
 }

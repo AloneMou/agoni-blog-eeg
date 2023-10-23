@@ -4,7 +4,7 @@
   "description": "",
   "private": true,
   "scripts": {
-    "start": "egg-scripts start --port=7001 --daemon --title=egg-umi-ssr --env=prod",
+    "start": "egg-scripts start --port=7001 --title=egg-umi-ssr --env=prod",
     "stop": "egg-scripts stop --title=egg-umi-ssr",
     "dev": "egg-bin dev --port=7001 --sticky",
     "build": "cross-env APP_ROOT=app/web umi build",
@@ -25,6 +25,7 @@
     "@ant-design/pro-form": "^1.64.0",
     "@ant-design/pro-layout": "^6.35.0",
     "@ant-design/pro-table": "^2.71.0",
+    "@svgr/webpack": "^8.1.0",
     "ahooks": "^2.0.0",
     "antd": "^4.19.0",
     "classnames": "^2.3.0",
