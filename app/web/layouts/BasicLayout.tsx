@@ -4,7 +4,7 @@ import React from 'react';
 import defaultSettings from '../config/defaultSettings';
 import {BackTop} from 'antd';
 import {Link} from 'umi';
-import { GithubOutlined } from '@ant-design/icons';
+import {GithubOutlined} from '@ant-design/icons';
 
 export interface BasicLayoutProps extends ProLayoutProps {
   route: ProLayoutProps['route'] & {
@@ -33,8 +33,8 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
           // @ts-ignore
           return <Link to={menuItemProps.path}>{defaultDom}</Link>;
         }}
-        footerRender={()=>{
-         return  <DefaultFooter
+        footerRender={() => {
+          return <DefaultFooter
             copyright="@2023 AgoniBlog博客"
             links={[
               {
@@ -45,7 +45,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
               },
               {
                 key: '我的GitHub',
-                title: <GithubOutlined />,
+                title: <GithubOutlined/>,
                 href: 'https://github.com/AloneMou',
                 blankTarget: true,
               },

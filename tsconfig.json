@@ -1,6 +1,8 @@
 {
+  "extends": "@eggjs/tsconfig",
   "compileOnSave": true,
   "compilerOptions": {
+    "declaration": false,
     "target": "es2017",
     "module": "commonjs",
     "sourceMap": true,
@@ -25,21 +27,22 @@
     "inlineSourceMap": true,
     "importHelpers": true,
     "paths": {
-      "@/*": ["./app/web/*"],
-      "@@/*": ["./app/web/.umi/*"]
-    },
-    "allowSyntheticDefaultImports": true
+      "@/*": [
+        "./app/web/*"
+      ],
+      "@@/*": [
+        "./app/web/.umi/*"
+      ]
+    }
   },
   "include": [
     "app/web/**/*",
     "typings/**/*",
-    "app/web/config/**/*",
-    ".prettierrc.js"
+    "app/web/config/**/*"
   ],
   "exclude": [
     "app/public",
     "app/views",
-    "node_modules*",
-    "app/web/.umi/*"
+    "node_modules*"
   ]
 }

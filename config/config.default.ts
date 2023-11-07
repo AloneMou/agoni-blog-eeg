@@ -1,17 +1,15 @@
-'use strict';
-const path = require('path');
+import {EggAppConfig, PowerPartial} from 'egg';
+import * as path from 'path';
 
-module.exports = (appInfo, appConfig = {}) => {
-  const assetsDir =
-    (appConfig.assets && appConfig.assets.assetsDir) || 'app/web';
-  const config = (exports = {});
+export type DefaultConfig = PowerPartial<EggAppConfig>;
 
-  // use for cookie sign key, should change to your own and keep security
+export default (appInfo: EggAppConfig, appConfig = {}) => {
+  // @ts-ignore
+  const assetsDir = (appConfig.assets && appConfig.assets.assetsDir) || 'app/web';
+  const config = {} as PowerPartial<EggAppConfig>;
   config.keys = appInfo.name + '_1513765449219_5858';
-
   // add your config here
   config.middleware = [];
-
   config.assets = {
     publicPath: '/public',
     devServer: {
@@ -26,22 +24,18 @@ module.exports = (appInfo, appConfig = {}) => {
       },
     },
   };
-
   config.view = {
     mapping: {
       '.html': 'nunjucks',
     },
     defaultViewEngine: 'nunjucks',
   };
-
   config.proxy = true;
-
   config.security = {
     csrf: false,
     xframe: {
       enable: false,
     },
   };
-
   return config;
 };

@@ -6,7 +6,6 @@ export default {
   effects: {},
   reducers: {
     test(state, { payload }) {
-      console.log(payload)
       state.title = 'hello umi';
     },
   },

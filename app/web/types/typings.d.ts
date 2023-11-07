@@ -14,7 +14,7 @@ declare module 'numeral';
 // declare module '@antv/data-set';
 declare module 'react-fittext';
 // declare module 'bizcharts-plugin-slider';
-
+declare module "react-helmet";
 
 
 // type SvgrComponent = React.StatelessComponent<React.SVGAttributes<SVGElement>>

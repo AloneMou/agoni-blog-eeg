@@ -1,11 +1,13 @@
-const { Controller } = require('egg');
+import { Controller } from 'egg';
 
-class HomeController extends Controller {
+export default  class HomeController extends Controller {
   constructor(ctx) {
     super(ctx);
+    // @ts-ignore
     this.serverRender = require('../public/umi.server');
   }
   async index() {
+    // @ts-ignore
     const { ctx, app } = this;
     global.host = `${ctx.request.protocol}://${ctx.request.host}`;
     global.href = ctx.request.href;
@@ -16,6 +18,7 @@ class HomeController extends Controller {
     const htmlTemplate = await ctx.view.render('index.html');
 
     // 将 html 模板传到服务端渲染函数中
+    // @ts-ignore
     const { error, html } = await this.serverRender({
       path: ctx.url,
       getInitialPropsCtx: {},
@@ -36,4 +39,4 @@ class HomeController extends Controller {
   }
 }
 
-module.exports = HomeController;
+// module.exports = HomeController;

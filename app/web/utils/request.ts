@@ -54,7 +54,7 @@ const errorHandler = (error: Error) => {
 
 //对 extend 实例进行简单的封装
 export const request = extend({
-  prefix: 'http://127.0.0.1:18080',
+  prefix: 'https://api.agoniblog.com/app-api',
   timeout: 3000,
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded',
@@ -95,7 +95,9 @@ request.interceptors.response.use(async (res, options) => {
       // 2. 进行刷新访问令牌
       try {
         const refreshTokenRes = await refreshToken();
+        // @ts-ignore
         setAuthCache(TOKEN_KEY, refreshTokenRes.data.accessToken);
+        // @ts-ignore
         setAuthCache(REFRESH_TOKEN_KEY, refreshTokenRes.data.refreshToken);
         requestList.forEach(cb => cb());
         return request(options.url, options);

@@ -5,7 +5,7 @@ type BlogArticle = {
   author: string,
   provenanceLink: string,
   creator: string,
-  createTime: Date,
+  createTime?: Date | undefined | null,
 }
 
 type BlogArticleCreateReqVO = {
@@ -25,4 +25,9 @@ interface BlogArticleEditReqVO extends BlogArticleCreateReqVO {
 
 interface BlogArticleListReqVO extends PageParam {
   title: string,
+}
+
+
+interface BlogArticleDetailRespVO extends BlogArticle {
+  content: string,
 }

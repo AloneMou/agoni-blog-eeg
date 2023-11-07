@@ -4,8 +4,7 @@ import {Helmet} from "react-helmet";
 import {githubList} from "@/api/github";
 import {Button, Card, Col, Row} from "antd";
 import '@/pages/common/github.css'
-import {Start as IconStart} from '@/assets/icon/zip.svg'
-import Icon from "@ant-design/icons";
+// @ts-ignore
 import {connect} from "umi";
 
 const GithubHome: React.FC = (props) => {
@@ -42,16 +41,16 @@ const GithubHome: React.FC = (props) => {
         <h1>Github仓库推荐</h1>
         <Row>
           {
-            records.map((item) =>(
-             <Col span={12} key={item.id}>
-              <Card title={<Button type='link' target='_blank' key={item.id} href={item.htmlUrl}>{item.name}</Button>}
+            records.map((item) => (
+              <Col span={12} key={item.id}>
+                <Card title={<Button type='link' target='_blank' key={item.id} href={item.htmlUrl}>{item.name}</Button>}
 
-                    style={{marginTop: '20px', marginLeft: '20px', textOverflow: 'ellipsis'}}>
-                <div className='githubList' key={item.id}>
-                  {item.description}
-                </div>
-              </Card>
-            </Col>
+                      style={{marginTop: '20px', marginLeft: '20px', textOverflow: 'ellipsis'}}>
+                  <div className='githubList' key={item.id}>
+                    {item.description}
+                  </div>
+                </Card>
+              </Col>
             ))
           }
         </Row>
@@ -71,4 +70,5 @@ GithubHome.getInitialProps = (async ({store, isServer, history, match, route}) =
   return {github};
 })
 
+// @ts-ignore
 export default connect((({github}) => ({records: github.list})))(GithubHome);

@@ -1,7 +1,8 @@
-'use strict';
+import { DefaultConfig } from './config.default';
 
-module.exports = (appInfo) => {
-  const config = (exports = {});
+
+export default () => {
+  const config: DefaultConfig = {};
   config.logger = {
     level: 'NONE',
     consoleLevel: 'DEBUG',

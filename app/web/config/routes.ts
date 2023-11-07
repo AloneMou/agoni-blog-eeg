@@ -47,6 +47,12 @@ export const routes: IRoute[] = [
             name: '关于我',
             path: '/about',
             component: '@/pages/common/about',
+          },
+          {
+            title: '文章',
+            name: '文章',
+            path: '/article',
+            component: '@/pages/article/index',
           }
         ]
       },
