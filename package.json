@@ -3,19 +3,23 @@
   "version": "1.0.0",
   "description": "",
   "egg": {
-    "typescript": true
+    "typescript": true,
+    "declarations": true,
+    "tscompiler": "ts-node/register/transpile-only"
   },
   "scripts": {
-    "start": "egg-scripts start --port=7001 --title=egg-umi-ssr --env=prod",
+    "start": "egg-scripts start --port=7001 --deamon --title=egg-umi-ssr --env=prod",
     "stop": "egg-scripts stop --title=egg-umi-ssr",
     "dev": "egg-bin dev --port=7001 --sticky",
     "build": "cross-env APP_ROOT=app/web umi build",
     "debug": "cross-env RM_TMPDIR=none COMPRESS=none egg-bin debug",
     "test": "egg-bin test",
     "cov": "egg-bin cov",
-    "lint": "eslint .",
+    "lint": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./app/web",
     "ci": "npm run lint && npm run cov",
-    "autod": "autod"
+    "autod": "autod",
+    "clean": "ets clean",
+    "tsc": "ets && tsc -p tsconfig.json"
   },
   "engines": {
     "node": ">=12.0.0"
@@ -31,7 +35,6 @@
     "@svgr/webpack": "^8.1.0",
     "ahooks": "^2.0.0",
     "antd": "^4.15.2",
-    "babel-plugin-import": "^1.0.0",
     "classnames": "^2.3.0",
     "egg": "^2.1.0",
     "egg-cors": "^2.0.0",
@@ -92,7 +95,6 @@
     "autod": "^3.0.1",
     "autod-egg": "^1.0.0",
     "babel-plugin-dva-hmr": "^0.4.0",
-    "babel-plugin-import": "^1.12.0",
     "cross-env": "^7.0.0",
     "cross-port-killer": "^1.3.0",
     "detect-installer": "^1.0.0",
@@ -100,7 +102,7 @@
     "egg-mock": "^4.0.1",
     "egg-webpack": "^5.0.0",
     "egg-webpack-react": "^3.0.0",
-    "eslint": "^5.8.0",
+    "eslint": "^7.32.0",
     "eslint-config-egg": "^5.1.1",
     "eslint-plugin-react": "^7.1.0",
     "gh-pages": "^3.2.0",

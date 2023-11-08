@@ -1,4 +1,6 @@
-import {isBrowser} from 'umi';
+// @ts-nocheck
+
+import { isBrowser } from 'umi';
 
 const setCookie = (name, value, path, days) => {
   if (!isBrowser()) {
@@ -9,16 +11,16 @@ const setCookie = (name, value, path, days) => {
   exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
   if (path) {
     document.cookie = `${name}=${encodeURIComponent(
-      value,
+      value
     )};path=${path};expires=${exp.toGMTString()}`;
   } else {
     document.cookie = `${name}=${encodeURIComponent(
-      value,
+      value
     )};expires=${exp.toGMTString()}`;
   }
 };
 
-const getCookie = (name) => {
+const getCookie = name => {
   let cookie;
   if (!isBrowser()) {
     // 这里需要在服务端处理好cookie，处理成{key:value}
@@ -33,4 +35,4 @@ const getCookie = (name) => {
   return cookie;
 };
 
-export {setCookie, getCookie};
+export { setCookie, getCookie };

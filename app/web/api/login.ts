@@ -15,7 +15,7 @@ export async function login(body: LoginParams) {
 
 // 刷新访问令牌
 export async function logout() {
-  return request<CommonResult<Boolean>>('/auth/logout',
+  return request<CommonResult<boolean>>('/auth/logout',
     {
       method: 'POST',
     });

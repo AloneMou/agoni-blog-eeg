@@ -1,11 +1,11 @@
-import {Avatar, Button, Card, Carousel, Col, Row, Space, Image, Layout} from "antd";
+import {Avatar, Card, Carousel, Image, Layout} from "antd";
 import {GridContent} from "@ant-design/pro-layout";
-import {EditOutlined, SettingOutlined} from "@ant-design/icons";
+import {SettingOutlined} from "@ant-design/icons";
 import {Helmet} from "react-helmet";
 
 
 const {Meta} = Card;
-const {Header, Footer, Sider, Content} = Layout;
+const {Sider, Content} = Layout;
 
 const Home: React.FC = () => {
 
@@ -25,9 +25,9 @@ const Home: React.FC = () => {
               />
             }
             actions={[
-              <SettingOutlined/>,
-              <SettingOutlined/>,
-              <SettingOutlined/>,
+              <SettingOutlined key={'1'}/>,
+              <SettingOutlined key={'2'}/>,
+              <SettingOutlined key={'3'}/>,
             ]}
           >
             <Meta
@@ -68,59 +68,7 @@ const Home: React.FC = () => {
                 src="https://oss.agoniblog.com/czp/20220325/3.png"
               />
             </div>
-
           </Carousel>
-
-          <Row gutter={16}>
-            <Col span={6}>
-              <Card title={"JavaGuide"}
-                    actions={[
-                      <Button icon={<SettingOutlined/>}>访问</Button>,
-                    ]}
-              >
-                <Meta
-                  avatar={<Avatar src="https://www.github-zh.com/github_avatars/Snailclimb?size=35"/>}
-                  description="「Java学习+面试指南」一份涵盖大部分 Java 程序员所需要掌握的核心知识。准备 Java 面试，首选 JavaGuide！"
-                />
-              </Card>
-            </Col>
-            <Col span={6}>
-              <Card title={"JavaGuide"}
-                    actions={[
-                      <Button icon={<SettingOutlined/>}>访问</Button>,
-                    ]}
-              >
-                <Meta
-                  avatar={<Avatar src="https://www.github-zh.com/github_avatars/Snailclimb?size=35"/>}
-                  description="「Java学习+面试指南」一份涵盖大部分 Java 程序员所需要掌握的核心知识。准备 Java 面试，首选 JavaGuide！"
-                />
-              </Card>
-            </Col>
-            <Col span={6}>
-              <Card title={"JavaGuide"}
-                    actions={[
-                      <Button icon={<SettingOutlined/>}>访问</Button>,
-                    ]}
-              >
-                <Meta
-                  avatar={<Avatar src="https://www.github-zh.com/github_avatars/Snailclimb?size=35"/>}
-                  description="「Java学习+面试指南」一份涵盖大部分 Java 程序员所需要掌握的核心知识。准备 Java 面试，首选 JavaGuide！"
-                />
-              </Card>
-            </Col>
-            <Col span={6}>
-              <Card title={"JavaGuide"}
-                    actions={[
-                      <Button icon={<SettingOutlined/>}>访问</Button>,
-                    ]}
-              >
-                <Meta
-                  avatar={<Avatar src="https://www.github-zh.com/github_avatars/Snailclimb?size=35"/>}
-                  description="「Java学习+面试指南」一份涵盖大部分 Java 程序员所需要掌握的核心知识。准备 Java 面试，首选 JavaGuide！"
-                />
-              </Card>
-            </Col>
-          </Row>
         </Content>
       </Layout>
 

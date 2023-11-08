@@ -1,4 +1,5 @@
-import {BasicLayoutProps as ProLayoutProps, DefaultFooter} from '@ant-design/pro-layout';
+import type {BasicLayoutProps as ProLayoutProps} from '@ant-design/pro-layout';
+import { DefaultFooter} from '@ant-design/pro-layout';
 import ProLayout from '@ant-design/pro-layout';
 import React from 'react';
 import defaultSettings from '../config/defaultSettings';
@@ -59,7 +60,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
           />;
         }}
         // @ts-ignore
-        childrenRender={(children, props) => {
+        childrenRender={(children) => {
           return (
             <>
               {children}
@@ -67,8 +68,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
             </>
           );
         }}
-      >
-      </ProLayout>
+       />
     </>
   );
 };

@@ -1,4 +1,4 @@
-import Icon, {CopyOutlined} from "@ant-design/icons";
+import {CopyOutlined} from "@ant-design/icons";
 import React from "react";
 import './code.css'
 
@@ -7,7 +7,6 @@ const CodeCopyButton = ({children}) => {
   const [copyOk, setCopyOk] = React.useState(false);
 
   const iconColor = copyOk ? '#0af20a' : '#ddd';
-  const icon = copyOk ? 'fa-check-square' : 'fa-copy';
 
   const handleClick = () => {
     navigator.clipboard.writeText(children[0].props.children[0]);

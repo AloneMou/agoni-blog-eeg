@@ -5,7 +5,6 @@
     "declaration": false,
     "target": "es2017",
     "module": "commonjs",
-    "sourceMap": true,
     "baseUrl": ".",
     "jsx": "react-jsx",
     "strict": true,
@@ -24,8 +23,8 @@
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "inlineSourceMap": true,
     "importHelpers": true,
+    "inlineSourceMap": true,
     "paths": {
       "@/*": [
         "./app/web/*"
@@ -36,13 +35,21 @@
     }
   },
   "include": [
+    "config/*.ts",
+    "app/router.ts",
     "app/web/**/*",
     "typings/**/*",
-    "app/web/config/**/*"
+    "app/web/types/*",
+    "app/web/config/**/*",
+    ".eslintrc.js",
+    ".stylelintrc.js",
+    ".prettierrc.js"
   ],
   "exclude": [
     "app/public",
     "app/views",
+    "app/web/.umi/*",
+    "scripts",
     "node_modules*"
   ]
 }

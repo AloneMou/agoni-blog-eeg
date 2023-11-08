@@ -5,7 +5,7 @@ export default {
   },
   effects: {},
   reducers: {
-    test(state, { payload }) {
+    test(state, {}) {
       state.title = 'hello umi';
     },
   },

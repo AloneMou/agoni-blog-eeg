@@ -1,5 +1,5 @@
 import {GridContent} from "@ant-design/pro-layout";
-import React, {useState} from "react";
+import React from "react";
 import {Helmet} from "react-helmet";
 import {githubList} from "@/api/github";
 import {Button, Card, Col, Row} from "antd";
@@ -12,20 +12,20 @@ const GithubHome: React.FC = (props) => {
   const {records} = props;
   console.log(records)
 
-  const [queryParam] = useState<GithubRepositoryListReqVo>({
-    name: '',
-    pageNo: 1,
-    pageSize: 20,
-  });
-  const [list, setList] = useState<GithubRepository[]>([]);
+  // const [queryParam] = useState<GithubRepositoryListReqVo>({
+  //   name: '',
+  //   pageNo: 1,
+  //   pageSize: 20,
+  // });
+  // const [list, setList] = useState<GithubRepository[]>([]);
   // setList(github.list)
   // const githubNode = ;
 
-  const getList = () => {
-    githubList(queryParam).then(res => {
-      setList(res.data.list)
-    })
-  }
+  // const getList = () => {
+  //   githubList(queryParam).then(res => {
+  //     setList(res.data.list)
+  //   })
+  // }
 
   // useEffect(() => {
   //   // getList();
@@ -60,11 +60,11 @@ const GithubHome: React.FC = (props) => {
 }
 
 // @ts-ignore
-GithubHome.getInitialProps = (async ({store, isServer, history, match, route}) => {
+GithubHome.getInitialProps = (async ({store, isServer}) => {
   if (!isServer) {
     return
   }
-  let res = await githubList({pageNo: 1, pageSize: 20});
+  const res = await githubList({pageNo: 1, pageSize: 20});
   await store.dispatch({type: 'github/list', payload: res.data.list})
   const {github} = store.getState()
   return {github};

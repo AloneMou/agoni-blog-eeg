@@ -5,7 +5,7 @@ export default {
   },
   effects: {},
   reducers: {
-    list(state, {payload}) {
+    list(state, { payload }) {
       state.list = payload;
     },
   },

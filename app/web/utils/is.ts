@@ -60,6 +60,7 @@ export function isString(val: unknown): val is string {
   return is(val, 'String');
 }
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 export function isFunction(val: unknown): val is Function {
   return typeof val === 'function';
 }
@@ -72,7 +73,7 @@ export function isRegExp(val: unknown): val is RegExp {
   return is(val, 'RegExp');
 }
 
-export function isArray(val: any): val is Array<any> {
+export function isArray(val: any): val is any[] {
   return val && Array.isArray(val);
 }
 

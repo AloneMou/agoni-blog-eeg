@@ -1,5 +1,5 @@
 import {GridContent} from "@ant-design/pro-layout";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Helmet} from "react-helmet";
 import ReactMarkdown from 'react-markdown'
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
@@ -8,16 +8,12 @@ import {blogArticleDetail} from "@/api/blog";
 import CodeCopyButton from './codeCopyBtn'
 import {Alert, Card, Col, Layout, Row, Space} from "antd";
 
-const {Header, Footer, Sider, Content} = Layout;
+const {Content} = Layout;
 const ArticleHome: React.FC = () => {
   const Pre = ({children}) => <pre className="blog-pre">
         <CodeCopyButton>{children}</CodeCopyButton>
     {children}
     </pre>
-  const [markdown, setMarkdown] = useState<string>("```java \n" +
-    "System.out.print \n" +
-    "```"
-  )
   const [article, setArticle] = useState<BlogArticleDetailRespVO>({
     id: '',
     title: '',
@@ -31,13 +27,12 @@ const ArticleHome: React.FC = () => {
   const getDetail = () => {
     blogArticleDetail('1718835990907367425').then(res => {
       setArticle(res.data)
-      // setMarkdown(res.data.content);
     })
   }
 
-  // useEffect(() => {
-  //   getDetail()
-  // }, [markdown])
+  useEffect(() => {
+    getDetail()
+  }, [])
 
   return (
     <GridContent>
@@ -56,18 +51,18 @@ const ArticleHome: React.FC = () => {
                 <ReactMarkdown
                   components={{
                     pre: Pre,
-                    code(props) {
+                    code: function (props) {
+                      // eslint-disable-next-line @typescript-eslint/no-unused-vars
                       const {children, className, node, ...rest} = props
                       const match = /language-(\w+)/.exec(className || '')
                       return match ? (
                         <SyntaxHighlighter
                           {...rest}
                           showLineNumbers={true}
-                          children={String(children).replace(/\n$/, '')}
                           style={coldarkDark}
                           language={match[1]}
                           PreTag="div"
-                        />
+                        >{String(children).replace(/\n$/, '')}</SyntaxHighlighter>
                       ) : (
                         <code {...rest} className={className}>
                           {children}
