@@ -14,7 +14,6 @@ export default defineConfig({
   targets: {
     ie: 11,
   },
-  hash: true,
   outputPath: '../public',
   manifest: {
     fileName: '../../config/manifest.json',
@@ -51,5 +50,5 @@ export default defineConfig({
   nodeModulesTransform: {
     type: 'none',
   },
-  routes,
+  routes: routes,
 });

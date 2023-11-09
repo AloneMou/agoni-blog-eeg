@@ -10,8 +10,6 @@ import {connect} from "umi";
 const GithubHome: React.FC = (props) => {
   // @ts-ignore
   const {records} = props;
-  console.log(records)
-
   // const [queryParam] = useState<GithubRepositoryListReqVo>({
   //   name: '',
   //   pageNo: 1,
@@ -60,7 +58,7 @@ const GithubHome: React.FC = (props) => {
 }
 
 // @ts-ignore
-GithubHome.getInitialProps = (async ({store, isServer}) => {
+GithubHome.getInitialProps = (async ({store, isServer, history, match, route}) => {
   if (!isServer) {
     return
   }

@@ -1,5 +1,5 @@
 import {GridContent} from "@ant-design/pro-layout";
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {Helmet} from "react-helmet";
 import ReactMarkdown from 'react-markdown'
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
@@ -7,42 +7,36 @@ import {coldarkDark} from 'react-syntax-highlighter/dist/esm/styles/prism';
 import {blogArticleDetail} from "@/api/blog";
 import CodeCopyButton from './codeCopyBtn'
 import {Alert, Card, Col, Layout, Row, Space} from "antd";
-
+// @ts-ignore
+import {connect} from "umi";
 
 const {Content} = Layout;
 const ArticleHome: React.FC = (props) => {
-  // @ts-ignore
-  const id = props.match.params.id;
-
+  // // @ts-ignore
+  // const id = props.match.params.id;
+  console.log(props)
   const Pre = ({children}) => <pre className="blog-pre">
         <CodeCopyButton>{children}</CodeCopyButton>
     {children}
     </pre>
-  const [article, setArticle] = useState<BlogArticleDetailRespVO>({
-    id: '',
-    title: '',
-    isOriginal: true,
-    author: '',
-    provenanceLink: '',
-    creator: '',
-    content: '',
-    summary: '',
-    type: 1,
-  })
+  // @ts-ignore
+  const {article} = props;
+  // const [article, setArticle] = useState<BlogArticleDetailRespVO>(detail)
+  // setArticle(detail);
 
-  const getDetail = (id: string) => {
-    blogArticleDetail(id).then(res => {
-      setArticle(res.data)
-    })
-  }
-
-  useEffect(() => {
-    // @ts-ignore
-    if (id) {
-      // @ts-ignore
-      getDetail(id)
-    }
-  }, [id])
+  // const getDetail = (id: string) => {
+  //   blogArticleDetail(id).then(res => {
+  //     setArticle(res.data)
+  //   })
+  // }
+  //
+  // useEffect(() => {
+  //   // @ts-ignore
+  //   if (id) {
+  //     // @ts-ignore
+  //     getDetail(id)
+  //   }
+  // }, [id])
 
   return (
     <GridContent>
@@ -62,9 +56,9 @@ const ArticleHome: React.FC = (props) => {
                 <ReactMarkdown
                   components={{
                     pre: Pre,
-                    code: function (props) {
+                    code: function (prop) {
                       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-                      const {children, className, node, ...rest} = props
+                      const {children, className, node, ...rest} = prop
                       const match = /language-(\w+)/.exec(className || '')
                       return match ? (
                         <SyntaxHighlighter
@@ -85,7 +79,7 @@ const ArticleHome: React.FC = (props) => {
                 >{article.content}</ReactMarkdown>
                 }
                 {article.type === 1 &&
-                <div dangerouslySetInnerHTML={{__html: article.content}}></div>
+                <div dangerouslySetInnerHTML={{__html: article.content}}/>
                 }
               </Card>
             </Content>
@@ -117,4 +111,18 @@ const ArticleHome: React.FC = (props) => {
   )
 }
 
-export default ArticleHome;
+
+// @ts-ignore
+ArticleHome.getInitialProps = (async ({store, isServer, history, match, route}) => {
+  if (!isServer) {
+    return
+  }
+  const res = await blogArticleDetail(match.params.id);
+  await store.dispatch({type: 'article/detail', payload: res.data})
+  const {article} = store.getState()
+  console.log(article)
+  return {article};
+})
+
+// @ts-ignore
+export default connect((({article}) => ({article: article.detail})))(ArticleHome);
