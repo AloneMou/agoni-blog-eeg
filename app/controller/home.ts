@@ -17,7 +17,7 @@ export default class HomeController extends Controller {
       global._navigatorLang = ctx.helper.parseNavLang(ctx);
 
       // 先走 eggjs 的view 渲染
-      const htmlTemplate = await ctx.view.render('../view/index.html');
+      const htmlTemplate = await ctx.view.render('index.html');
       console.log("渲染");
       // 将 html 模板传到服务端渲染函数中
       // @ts-ignore

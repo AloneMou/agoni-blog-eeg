@@ -6,3 +6,11 @@ export async function blogArticleDetail(id: string) {
     method: METHOD.GET,
   });
 }
+
+export async function blogArticleList(data: BlogArticleListReqVO) {
+  return request<CommonResult<PageResult<BlogArticle>>>(`/web/blog/article/record`, {
+    method: METHOD.GET,
+    params: data,
+  });
+}
+

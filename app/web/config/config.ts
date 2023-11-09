@@ -29,7 +29,7 @@ export default defineConfig({
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
       })();
-      `
+      `,
   ],
   // locale: {
   //   default: 'zh-CN',

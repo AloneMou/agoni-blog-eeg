@@ -51,7 +51,8 @@ export const routes: IRoute[] = [
           {
             title: '文章',
             name: '文章',
-            path: '/article',
+            hideInMenu: true,
+            path: '/article/:id',
             component: '@/pages/article/index',
           }
         ]

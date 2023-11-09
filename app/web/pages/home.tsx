@@ -1,13 +1,46 @@
-import {Avatar, Card, Carousel, Image, Layout} from "antd";
+import {Avatar, Button, Card, Carousel, Col, Image, Layout, Row, Space} from "antd";
 import {GridContent} from "@ant-design/pro-layout";
-import {SettingOutlined} from "@ant-design/icons";
+import {EyeOutlined, HeartOutlined, LikeOutlined, SettingOutlined, StarOutlined} from "@ant-design/icons";
 import {Helmet} from "react-helmet";
+import {blogArticleList} from "@/api/blog";
+import {useEffect, useState} from "react";
 
 
 const {Meta} = Card;
 const {Sider, Content} = Layout;
 
 const Home: React.FC = () => {
+
+  const images = ['https://oss.agoniblog.com/czp/20220325/16.png', 'https://oss.agoniblog.com/czp/20220325/3.png'];
+  const [queryParam] = useState<BlogArticleListReqVO>({
+    pageNo: 1,
+    pageSize: 20,
+    title: '',
+  })
+  const [list, setList] = useState<BlogArticle[]>([]);
+
+  const carouselList = images.map(image => {
+    return (<>
+      <div>
+        <Image
+          width={"100%"}
+          height={500}
+          preview={false}
+          src={image}
+        />
+      </div>
+    </>)
+  })
+
+  const getList = () => {
+    blogArticleList(queryParam).then(res => {
+      setList(res.data.list)
+    })
+  }
+
+  useEffect(() => {
+    getList()
+  }, [queryParam])
 
   return (
     <GridContent>
@@ -39,39 +72,67 @@ const Home: React.FC = () => {
         </Sider>
         <Content style={{marginLeft: '20px'}}>
           <Carousel autoplay>
-            <div>
-              <Image
-                width={"100%"}
-                preview={false}
-                src="https://oss.agoniblog.com/czp/20220325/16.png"
-              />
-            </div>
-            <div>
-              <Image
-                width={"100%"}
-                preview={false}
-                src="https://oss.agoniblog.com/czp/20220325/16.png"
-              />
-            </div>
-            <div>
-              <Image
-                width={"100%"}
-                preview={false}
-                src="https://oss.agoniblog.com/czp/20220325/3.png"
-              />
-              {/*<h3 style={contentStyle}></h3>*/}
-            </div>
-            <div>
-              <Image
-                width={"100%"}
-                preview={false}
-                src="https://oss.agoniblog.com/czp/20220325/3.png"
-              />
-            </div>
+            {carouselList}
           </Carousel>
+          <div className={'blogsbox'}>
+            {list.map((blog) => (
+              <>
+                <Card data-scroll-reveal="enter bottom over 1s" className="blogs">
+                  <h3 className="blogtitle">
+                    <Button type='link' style={{color: '#555'}} href={`/article/${blog.id}`}
+                            target="_self">{blog.title}</Button>
+                  </h3>
+                  <Row>
+                    <Col xs={5}>
+                  <span>
+                  <a href={`/article/${blog.id}`} target="_self" rel="noreferrer" style={{color: '#555'}}>
+                    <Image
+                      height={150}
+                      width={150}
+                      preview={false}
+                      src="https://picture.moguit.cn/blog/chat/jpg/2022/3/21/1647823169730.jpg"/>
+                  </a>
+                  </span>
+                    </Col>
+                    <Col xs={19}>
+                      <p className="blogtext">{blog.summary}</p>
+                    </Col>
+                  </Row>
+                  <div>
+                    <div className="bloginfo">
+                      <Space wrap style={{display: 'flex', justifyContent: 'space-between'}}>
+                        <div>
+                          <Space>
+                            <Avatar size={24}
+                                    src={'https://picture.moguit.cn//blog/admin/jpg/2021/11/10/1636512049307.jpg'}/>
+                            <div className="author"><span className="pointer lv2">{blog.author}</span></div>
+                          </Space>
+                        </div>
+                        <div>
+                          <Space size={12}>
+                            <div>
+                              <EyeOutlined/> 12
+                            </div>
+                            <div>
+                              <HeartOutlined/>13
+                            </div>
+                            <div>
+                              <LikeOutlined/>50
+                            </div>
+                            <div>
+                              <StarOutlined/>12
+                            </div>
+                          </Space>
+                        </div>
+                      </Space>
+                    </div>
+                  </div>
+                </Card>
+              </>
+            ))}
+          </div>
         </Content>
       </Layout>
-
     </GridContent>
   )
 }

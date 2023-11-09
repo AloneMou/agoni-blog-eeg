@@ -8,8 +8,12 @@ import {blogArticleDetail} from "@/api/blog";
 import CodeCopyButton from './codeCopyBtn'
 import {Alert, Card, Col, Layout, Row, Space} from "antd";
 
+
 const {Content} = Layout;
-const ArticleHome: React.FC = () => {
+const ArticleHome: React.FC = (props) => {
+  // @ts-ignore
+  const id = props.match.params.id;
+
   const Pre = ({children}) => <pre className="blog-pre">
         <CodeCopyButton>{children}</CodeCopyButton>
     {children}
@@ -22,17 +26,23 @@ const ArticleHome: React.FC = () => {
     provenanceLink: '',
     creator: '',
     content: '',
+    summary: '',
+    type: 1,
   })
 
-  const getDetail = () => {
-    blogArticleDetail('1718835990907367425').then(res => {
+  const getDetail = (id: string) => {
+    blogArticleDetail(id).then(res => {
       setArticle(res.data)
     })
   }
 
   useEffect(() => {
-    getDetail()
-  }, [])
+    // @ts-ignore
+    if (id) {
+      // @ts-ignore
+      getDetail(id)
+    }
+  }, [id])
 
   return (
     <GridContent>
@@ -48,6 +58,7 @@ const ArticleHome: React.FC = () => {
                 <h2>{article.title}</h2>
                 <Alert message="本文为AgoniBlog博客原创文章，转载无需和我联系，但请注明来自AgoniBlog博客 https://www.agoniblog.com" type="info"
                        showIcon/>
+                {article.type === 2 &&
                 <ReactMarkdown
                   components={{
                     pre: Pre,
@@ -72,6 +83,10 @@ const ArticleHome: React.FC = () => {
                   }
                   }
                 >{article.content}</ReactMarkdown>
+                }
+                {article.type === 1 &&
+                <div dangerouslySetInnerHTML={{__html: article.content}}></div>
+                }
               </Card>
             </Content>
           </Col>
