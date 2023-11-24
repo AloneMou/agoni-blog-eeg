@@ -30,21 +30,17 @@ export default defineConfig({
       })();
       `,
   ],
-  // locale: {
-  //   default: 'zh-CN',
-  //   antd: false,
-  //   title: false,
-  //   baseNavigator: true,
-  //   baseSeparator: '-',
-  // },
   cssLoader: {
     localsConvention: 'camelCase',
   },
-  //对按照 css modules 方式引入的 css 或 less 等样式文件，自动生成 ts 类型定义文件。
+  extraPostCSSPlugins: [
+    // eslint-disable-next-line
+    require('tailwindcss'),
+    require("autoprefixer"),
+  ],
   cssModulesTypescriptLoader: {},
   dva: {
     immer: true,
-    // hmr: false,
   },
   fastRefresh: {},
   nodeModulesTransform: {

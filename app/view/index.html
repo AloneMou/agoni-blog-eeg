@@ -16,6 +16,15 @@
   window.routerBase = '/';
   window.resourceBaseUrl = '{{ helper.assets.resourceBase }}';
 </script>
+<script>
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?10245fc6ee5650a88ba1f06bd17d83b1";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
 {{ helper.assets.getScript('umi.js') | safe }}
 </body>
 </html>
